@@ -93,6 +93,23 @@ train = dict(
     pipeline=None,
     test_mode=False)
 
+rects_train_prefix = 'dataset/ReCTS/line_str_parse/train/'
+
+rects_train = dict(
+    type=dataset_type,
+    img_prefix=rects_train_prefix + 'images/',
+    ann_file=rects_train_prefix + 'labels.txt',
+    loader=dict(
+        type='HardDiskLoader',
+        repeat=1,
+        parser=dict(
+            type='LineStrParser',
+            keys=['filename', 'text'],
+            keys_idx=[0, 1],
+            separator=' ')),
+    pipeline=None,
+    test_mode=False)
+
 test_prefix = 'dataset/ctwdataset/annotations/line_str_parse/val/'
 
 test_ann_file = test_prefix + 'labels.txt'
@@ -112,15 +129,31 @@ test = dict(
     pipeline=None,
     test_mode=False)
 
+rects_test_prefix = 'dataset/ReCTS/line_str_parse/val/'
+rects_train = dict(
+    type=dataset_type,
+    img_prefix=rects_test_prefix + 'images/',
+    ann_file=rects_test_prefix + 'labels.txt',
+    loader=dict(
+        type='HardDiskLoader',
+        repeat=1,
+        parser=dict(
+            type='LineStrParser',
+            keys=['filename', 'text'],
+            keys_idx=[0, 1],
+            separator=' ')),
+    pipeline=None,
+    test_mode=False)
+
 data = dict(
     samples_per_gpu=40,
     workers_per_gpu=2,
     val_dataloader=dict(samples_per_gpu=1),
     test_dataloader=dict(samples_per_gpu=1),
     train=dict(
-        type='UniformConcatDataset', datasets=[train],
+        type='UniformConcatDataset', datasets=[train, rects_train],
         pipeline=train_pipeline),
     val=dict(
-        type='UniformConcatDataset', datasets=[test], pipeline=test_pipeline),
+        type='UniformConcatDataset', datasets=[test, rects_train], pipeline=train_pipeline),
     test=dict(type='UniformConcatDataset', datasets=[test], pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='acc')
