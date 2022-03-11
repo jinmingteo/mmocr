@@ -3,6 +3,6 @@ dir="$PWD"
 
 #nohup jupyter notebook --no-browser --ip=0.0.0.0 --port 8416 --allow-root > logsfile.logs & disown
 
-docker run -it --gpus all -d -v $dir:/$dir -w $dir --expose 8416 -p 8416:8416 mmocr
+docker run -it --gpus all -d -v $dir:/$dir -w $dir --name mmocr_chi --shm-size=256m --ipc=host --expose 8416 -p 8416:8416 mmocr
 #docker run -it  --runtime=nvidia -v $dir:/$dir -w $dir --expose 8416 -p 8416:8416 mmocr
 #docker run -it --gpus '"device=0"' -v /DATA:/DATA --expose 8416 -p 8416:8416 mmocr
