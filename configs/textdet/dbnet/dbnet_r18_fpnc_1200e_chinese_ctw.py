@@ -30,4 +30,5 @@ data = dict(
         datasets=test_list,
         pipeline=test_pipeline_1333_736))
 
-evaluation = dict(interval=100, metric='hmean-iou')
+evaluation = dict(interval=1, metric='hmean-iou', save_best='0_hmean-iou_hmean', rule='greater')
+total_epochs = 15
