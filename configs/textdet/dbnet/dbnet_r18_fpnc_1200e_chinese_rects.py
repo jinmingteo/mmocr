@@ -6,8 +6,8 @@ _base_ = [
     '../../_base_/det_pipelines/dbnet_pipeline.py'
 ]
 
-train_list = {{_base_.train_list}}
-test_list = {{_base_.test_list}}
+train_list = [{{_base_.rects_train}}]
+test_list = [{{_base_.rects_test}}]
 
 train_pipeline_r18 = {{_base_.train_pipeline_r18}}
 test_pipeline_1333_736 = {{_base_.test_pipeline_1333_736}}
@@ -15,8 +15,8 @@ test_pipeline_1333_736 = {{_base_.test_pipeline_1333_736}}
 data = dict(
     samples_per_gpu=16,
     workers_per_gpu=8,
-    val_dataloader=dict(samples_per_gpu=1),
-    test_dataloader=dict(samples_per_gpu=1),
+    val_dataloader=dict(samples_per_gpu=16),
+    test_dataloader=dict(samples_per_gpu=16),
     train=dict(
         type='UniformConcatDataset',
         datasets=train_list,

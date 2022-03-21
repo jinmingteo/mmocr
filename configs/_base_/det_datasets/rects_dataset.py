@@ -26,6 +26,3 @@ rects_test = dict(
             keys=['file_name', 'height', 'width', 'annotations'])),
     pipeline=None,
     test_mode=True)
-
-train_list = [rects_train]
-test_list = [rects_test]

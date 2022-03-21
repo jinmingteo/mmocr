@@ -26,6 +26,3 @@ ctw_test = dict(
             keys=['file_name', 'height', 'width', 'annotations'])),
     pipeline=None,
     test_mode=True)
-
-train_list = [ctw_train]
-test_list = [ctw_test]
