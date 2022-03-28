@@ -2,12 +2,12 @@ _base_ = [
     '../../_base_/runtime_10e.py',
     '../../_base_/schedules/schedule_sgd_1500e.py',
     '../../_base_/det_models/fcenet_r50_fpn.py',
-    '../../_base_/det_datasets/ctw_dataset.py',
+    '../../_base_/det_datasets/rects_dataset.py',
     '../../_base_/det_pipelines/fcenet_pipeline.py'
 ]
 
-train_list = [{{_base_.ctw_train}}] 
-test_list = [{{_base_.ctw_test}}]
+train_list = [{{_base_.rects_train}}] 
+test_list = [{{_base_.rects_test}}]
 
 train_pipeline_icdar2015 = {{_base_.train_pipeline_icdar2015}}
 test_pipeline_icdar2015 = {{_base_.test_pipeline_icdar2015}}

@@ -6,8 +6,8 @@ _base_ = [
     '../../_base_/det_datasets/ctw_dataset.py'
 ]
 
-train_list = {{_base_.train_list}}
-test_list = {{_base_.test_list}}
+train_list = [{{_base_.ctw_train}}] 
+test_list = [{{_base_.ctw_test}}]
 
 train_pipeline_ctw1500 = {{_base_.train_pipeline_ctw1500}}
 test_pipeline_ctw1500 = {{_base_.test_pipeline_ctw1500}}

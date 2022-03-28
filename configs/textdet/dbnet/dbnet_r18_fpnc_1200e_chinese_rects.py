@@ -31,4 +31,4 @@ data = dict(
         pipeline=test_pipeline_1333_736))
 
 evaluation = dict(interval=1, metric='hmean-iou', save_best='0_hmean-iou_hmean', rule='greater')
-total_epochs = 8
+total_epochs = 16
